@@ -16,7 +16,7 @@ public class MemberServiceImpl implements MembersService {
 	private MembersDAO dao;
 	
 	@Override
-	public List<Member> testMember() {
+	public List<Member> getAllMembers() {
 		
 		/*
 		 * Member testMember = new Member(); testMember.setId(1);
@@ -25,7 +25,42 @@ public class MemberServiceImpl implements MembersService {
 		 * 
 		 * return testMember;
 		 */
-		return dao.testMember();
+		//3
+		return dao.getAllMembers();
 	}
+	
+	@Override
+	public Member getMember(Integer id) {
+		return dao.getMember(id);
+	}
+	
+	@Override
+	public void insertMember(Member member) {
+		 dao.insertMember(member);
+	}
+	
+	@Override
+	public Member updateMember(Integer id, Member member) {
+		
+		Member updateMember  = new Member();
+		
+		if(dao.updateMember(id,member) == 1) {
+			updateMember.setId(id);
+			updateMember.setName(member.getName());
+			updateMember.setAge(member.getAge());
+			updateMember.setDept(member.getDept());
+		}
+		
+		
+		return updateMember;
+	}
+
+	@Override
+	public Integer deleteMember(Integer id) {
+		return dao.deleteMember(id);
+	}
+	
+	
+	
 	
 }
