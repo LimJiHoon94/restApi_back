@@ -1,20 +1,22 @@
 package com.dev.todoList.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dev.todoList.dto.Member;
-import com.dev.todoList.service.MemberService;
+import com.dev.todoList.service.MembersService;
 
 @RestController
 public class MembersController {
 	
 	@Autowired
-	private MemberService service;
+	private MembersService service;
 
 	@GetMapping(path = "/test")
-	public Member memberTest() {
+	public List<Member> memberTest() {
 		/*
 		 * Member testMember = new Member();
 		 * 
