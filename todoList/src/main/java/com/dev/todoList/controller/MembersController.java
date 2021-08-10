@@ -20,8 +20,22 @@ public class MembersController {
 	
 	@Autowired
 	private MembersService service;
-
-	@GetMapping(path = "/members")
+	
+	@GetMapping(path = "/api/test")
+	public String getTest() {
+		System.out.println("TEST CONNECT");
+		String names = "";
+		List<Member> memberList =  service.getAllMembers();
+		for(int i = 0 ; i < memberList.size(); i++) {
+			//System.out.println(memberList.get(i).getName());
+			names =names +  "," + memberList.get(i).getName();
+		}
+		
+		
+		return names;
+	}
+	
+	@GetMapping(path = "/api/members")
 	public List<Member> getAllMembers() {
 		//1
 		System.out.println("call");
@@ -32,23 +46,22 @@ public class MembersController {
 		return service.getAllMembers();
 	}
 	
-	@GetMapping(path = "/members/{id}")
+	@GetMapping(path = "/api/members/{id}")
 	public Member getMember(@PathVariable Integer id) {
 		return service.getMember(id);
 	}
 	
-	@PostMapping(path = "/members")
-	public Member insertMember(@RequestBody Member member) {
-		service.insertMember(member);
-		return member;
-	}
+	/*
+	 * @PostMapping(path = "/members") public Member insertMember(@RequestBody
+	 * Member member) { service.insertMember(member); return member; }
+	 */
 	
-	@PutMapping(path = "/members/{id}")
+	@PutMapping(path = "/api/members/{id}")
 	public Member updateMember(@PathVariable Integer id, @RequestBody Member member) {
 		return service.updateMember(id, member);
 	}
 	
-	@DeleteMapping(path = "/members/{id}")
+	@DeleteMapping(path = "/api/members/{id}")
 	public Integer deleteMember(@PathVariable Integer id) {
 		return service.deleteMember(id);
 	}
