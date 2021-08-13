@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MembersService {
 		
 		Member updateMember  = new Member();
 		
-		if(dao.updateMember(id,member) == 1) {
+		if(dao.updateMember(id,member) == 1) { 
 			updateMember.setId(id);
 			updateMember.setName(member.getName());
 			updateMember.setAge(member.getAge());
