@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,12 +19,13 @@ import com.dev.todoList.service.MembersService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/api")
 public class MembersController {
 	
 	@Autowired
 	private MembersService service;
 	
-	@GetMapping(path = "/api/test")
+	@GetMapping(path = "/test")
 	public String getTest() {
 		System.out.println("TEST CONNECT");
 		String names = "";
@@ -37,7 +39,7 @@ public class MembersController {
 		return names;
 	}
 	
-	@GetMapping(path = "/api/members")
+	@GetMapping(path = "/members")
 	public List<Member> getAllMembers() {
 		//1
 		System.out.println("call");
@@ -48,7 +50,7 @@ public class MembersController {
 		return service.getAllMembers();
 	}
 	
-	@GetMapping(path = "/api/members/{id}")
+	@GetMapping(path = "/members/{id}")
 	public Member getMember(@PathVariable Integer id) {
 		return service.getMember(id);
 	}
@@ -58,12 +60,12 @@ public class MembersController {
 	 * Member member) { service.insertMember(member); return member; }
 	 */
 	
-	@PutMapping(path = "/api/members/{id}")
+	@PutMapping(path = "/members/{id}")
 	public Member updateMember(@PathVariable Integer id, @RequestBody Member member) {
 		return service.updateMember(id, member);
 	}
 	
-	@DeleteMapping(path = "/api/members/{id}")
+	@DeleteMapping(path = "/members/{id}")
 	public Integer deleteMember(@PathVariable Integer id) {
 		return service.deleteMember(id);
 	}
