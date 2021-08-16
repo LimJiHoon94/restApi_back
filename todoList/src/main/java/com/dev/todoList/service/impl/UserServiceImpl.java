@@ -18,10 +18,23 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDao;
 	
+	//전체 사용자 조회
 	@Override
 	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
 		return userDao.getAllUsers();
+	}
+
+	//시용자 생성
+	@Override
+	public void createUser(String id, String pw, String snsYn) {
+		userDao.createUser(id, pw, snsYn);
+	}
+
+	//마지막 User_Seq 
+	@Override
+	public int lastUserSeq() {
+		return userDao.lastUserSeq();
 	}
 	
 	/*

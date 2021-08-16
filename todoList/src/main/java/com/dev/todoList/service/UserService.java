@@ -7,8 +7,17 @@ import com.dev.todoList.dto.User;
 
 public interface UserService {
 	
-	//2
+	
+	//전체 사용자 조회
 	List<User> getAllUsers();
+	
+	//마지막 User_Seq
+	int lastUserSeq();
+	
+	//시용자 생성
+	void createUser(String id,
+					String pw,
+					String snsYn);
 	
 	/*
 	 * List<Member> getAllMembers();

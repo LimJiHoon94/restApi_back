@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.todoList.dao.UserDAO">
-
-	<!-- 5 -->
+	
+	
+	<!-- 전체 사용자 조회 -->
 	<select id="getAllUsers" resultType="com.dev.todoList.dto.User">
 		SELECT * FROM T_USER_INFO
 	</select>
 	
+	<!-- 전체 사용자 조회 -->
+	<select id="lastUserSeq" resultType="int">
+		SELECT USER_SEQ + 1 AS LAST_USER_SEQ FROM T_USER_INFO ORDER BY USER_SEQ DESC LIMIT 1
+	</select>
 	
+<!-- 	<insert id="createUser" >
+		INSERT INTO T_USER_INFO (USER_SEQ , ID , PW, SNS_YN , USER_LEVEL , CREATE_DATE)
+			VALUES (3, "USER2" , "1234", "N", 4 , NOW());
+	</insert> -->
 	
 <!-- 	<select id="getMember" resultType="com.dev.todoList.dto.Member" parameterType="int">
 		SELECT * FROM members WHERE id= #{id}

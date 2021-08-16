@@ -27,6 +27,8 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
+	
+	//전체 사용자 조회
 	@GetMapping(path = "/getallusers")
 	public List<User> getAllUsers() {
 		
@@ -37,6 +39,23 @@ public class UserController {
 		}
 		
 		return service.getAllUsers();
+	}
+	
+	//사용자 생성 (회원가입 , ADMIN 사용자 생성)
+	@GetMapping(path = "/createUser/{id}/{pw}/{snsYn}")
+	public int createUser(@PathVariable String id , 
+						  @PathVariable String pw , 
+						  @PathVariable String snsYn) {
+		
+		System.out.println(id);
+		System.out.println(pw);
+		System.out.println(snsYn);
+		
+		
+		
+		
+		
+		return 0;
 	}
 	  
 	
