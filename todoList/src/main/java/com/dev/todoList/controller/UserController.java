@@ -47,6 +47,9 @@ public class UserController {
 						  @PathVariable String pw , 
 						  @PathVariable String snsYn) {
 		
+		int userSeq = service.getUserInfoLastSeq();
+		
+		System.out.println(userSeq);
 		System.out.println(id);
 		System.out.println(pw);
 		System.out.println(snsYn);

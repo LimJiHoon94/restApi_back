@@ -8,10 +8,11 @@
 		SELECT * FROM T_USER_INFO
 	</select>
 	
-	<!-- 전체 사용자 조회 -->
-	<select id="lastUserSeq" resultType="int">
+	<!-- T_USER_INFO 마지막 USER_SEQ 조회 -->
+	<select id="getUserInfoLastSeq" resultType="int">
 		SELECT USER_SEQ + 1 AS LAST_USER_SEQ FROM T_USER_INFO ORDER BY USER_SEQ DESC LIMIT 1
 	</select>
+	
 	
 <!-- 	<insert id="createUser" >
 		INSERT INTO T_USER_INFO (USER_SEQ , ID , PW, SNS_YN , USER_LEVEL , CREATE_DATE)

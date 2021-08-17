@@ -36,6 +36,13 @@ public class UserServiceImpl implements UserService {
 	public int lastUserSeq() {
 		return userDao.lastUserSeq();
 	}
+
+	//T_USER_INFO 마지막 USER_SEQ 조회
+	@Override
+	public int getUserInfoLastSeq() {
+			
+		return userDao.getUserInfoLastSeq();
+	}
 	
 	/*
 	 * @Override public Member getMember(Integer id) { return dao.getMember(id); }

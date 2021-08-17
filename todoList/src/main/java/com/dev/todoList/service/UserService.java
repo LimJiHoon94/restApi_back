@@ -19,6 +19,9 @@ public interface UserService {
 					String pw,
 					String snsYn);
 	
+	//T_USER_INFO 마지막 USER_SEQ 조회
+	int getUserInfoLastSeq();
+	
 	/*
 	 * List<Member> getAllMembers();
 	 * 

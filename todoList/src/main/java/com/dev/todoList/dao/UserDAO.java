@@ -21,6 +21,11 @@ public interface UserDAO {
 	void createUser(String id,
 			String pw,
 			String snsYn);
+	
+	//T_USER_INFO 마지막 USER_SEQ 조회
+	int getUserInfoLastSeq();
+	
+	
 	//4
 	/*
 	 * List<Member> getAllMembers();
