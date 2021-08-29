@@ -18,24 +18,6 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDao;
 	
-	//전체 사용자 조회
-	@Override
-	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
-		return userDao.getAllUsers();
-	}
-
-	//시용자 생성
-	@Override
-	public void createUser(String id, String pw, String snsYn) {
-		userDao.createUser(id, pw, snsYn);
-	}
-
-	//마지막 User_Seq 
-	@Override
-	public int lastUserSeq() {
-		return userDao.lastUserSeq();
-	}
 
 	//T_USER_INFO 마지막 USER_SEQ 조회
 	@Override
@@ -44,26 +26,18 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserInfoLastSeq();
 	}
 	
-	/*
-	 * @Override public Member getMember(Integer id) { return dao.getMember(id); }
-	 * 
-	 * @Override public void insertMember(Member member) { dao.insertMember(member);
-	 * }
-	 * 
-	 * @Override public Member updateMember(Integer id, Member member) {
-	 * 
-	 * Member updateMember = new Member();
-	 * 
-	 * if(dao.updateMember(id,member) == 1) { updateMember.setId(id);
-	 * updateMember.setName(member.getName()); updateMember.setAge(member.getAge());
-	 * updateMember.setDept(member.getDept()); }
-	 * 
-	 * 
-	 * return updateMember; }
-	 * 
-	 * @Override public Integer deleteMember(Integer id) { return
-	 * dao.deleteMember(id); }
-	 */
+	//회원가입 처리
+	@Override
+	public int joinUser(User user) {
+		return userDao.joinUser(user);
+	}
+	
+	//id중복처리
+	@Override
+	public int idCheck(String id) {
+		return userDao.idCheck(id);
+	}
+	
 	
 	
 	

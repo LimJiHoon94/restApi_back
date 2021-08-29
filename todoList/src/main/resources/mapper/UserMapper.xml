@@ -3,51 +3,21 @@
 <mapper namespace="com.dev.todoList.dao.UserDAO">
 	
 	
-	<!-- 전체 사용자 조회 -->
-	<select id="getAllUsers" resultType="com.dev.todoList.dto.User">
-		SELECT * FROM T_USER_INFO
-	</select>
-	
 	<!-- T_USER_INFO 마지막 USER_SEQ 조회 -->
 	<select id="getUserInfoLastSeq" resultType="int">
 		SELECT USER_SEQ + 1 AS LAST_USER_SEQ FROM T_USER_INFO ORDER BY USER_SEQ DESC LIMIT 1
 	</select>
 	
-	
-<!-- 	<insert id="createUser" >
-		INSERT INTO T_USER_INFO (USER_SEQ , ID , PW, SNS_YN , USER_LEVEL , CREATE_DATE)
-			VALUES (3, "USER2" , "1234", "N", 4 , NOW());
-	</insert> -->
-	
-<!-- 	<select id="getMember" resultType="com.dev.todoList.dto.Member" parameterType="int">
-		SELECT * FROM members WHERE id= #{id}
+	<!-- id중복처리 -->
+	<select id="idCheck" resultType="int" parameterType="string">
+		SELECT count(*) FROM T_USER_INFO WHERE ID = #{id}
 	</select>
 	
-	<insert id="insertMember" parameterType="com.dev.todoList.dto.Member" useGeneratedKeys="true" keyProperty="id" >
-		INSERT INTO 
-			members 
-				(name, age, dept)
-			VALUES
-				(#{name}, #{age}, #{dept})
+	<!-- 회원가입 -->
+	<insert id="joinUser" parameterType="com.dev.todoList.dto.User">
+		INSERT INTO T_USER_INFO (USER_SEQ , ID , PW, USER_NAME , E_MAIL ,USER_LEVEL , CREATE_DATE)
+			VALUES (#{userSeq}, #{id} , #{pw} , #{userName} , #{eMail} , 1 , NOW())
 	</insert>
 	
-	update는 갱신에 성공한 레코드 수를 반환 함
-	<update id="updateMember">
-		UPDATE 
-			members
-		SET 
-			name = #{member.name} , age = #{member.age} , dept = #{member.dept}
-		WHERE
-			id = #{id}
-	</update>
-	
-	delete는 삭제한 행의 개수를 반환
-	<delete id="deleteMember" parameterType="int">
-		DELETE FROM 
-			members
-		WHERE 
-			id = #{id}
-	</delete>
-	 -->
 	
 </mapper>

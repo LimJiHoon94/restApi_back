@@ -18,14 +18,14 @@ public class User {
 	private int userSeq;
 	private String id;
 	private String pw;
-	private String snsYn;
+	private String userName;
+	private String eMail;
 	private int userLevel;
 	private Date createDate;
 	
 	public User() {
 		super();
 	}
-
 	
 	public int getUserSeq() {
 		return userSeq;
@@ -51,12 +51,20 @@ public class User {
 		this.pw = pw;
 	}
 	
-	public String getSnsYn() {
-		return pw;
+	public String getUserName() {
+		return userName;
 	}
 	
-	public void setSnsYn(String snsYn) {
-		this.snsYn = snsYn;
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
+	public String getEMail() {
+		return eMail;
+	}
+	
+	public void setEMail(String eMail) {
+		this.eMail = eMail;
 	}
 	
 	public int getUserLevel() {
@@ -75,8 +83,6 @@ public class User {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
-	
 	
 	@Override
 	public String toString() {
