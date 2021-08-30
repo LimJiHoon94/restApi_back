@@ -19,5 +19,9 @@
 			VALUES (#{userSeq}, #{id} , #{pw} , #{userName} , #{eMail} , 1 , NOW())
 	</insert>
 	
+	<select id="loginCount" resultType="int" parameterType="com.dev.todoList.dto.User">
+		SELECT COUNT(*) FROM T_USER_INFO WHERE ID = #{id} AND PW = #{pw}
+	</select>
+	
 	
 </mapper>

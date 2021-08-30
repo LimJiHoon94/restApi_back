@@ -20,4 +20,6 @@ public interface UserDAO {
 	//아이디 중복 확인
 	int idCheck(String id);
 	
+	//login count 
+	int loginCount(User user);
 }

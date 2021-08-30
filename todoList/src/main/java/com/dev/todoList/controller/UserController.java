@@ -50,5 +50,18 @@ public class UserController {
 		return bisProcess;
 	}
 	
+	//로그인
+	@PostMapping(path = "/loginRun")
+	public int loginRun(User user) {
+		System.out.println("id : " + user.getId());
+		System.out.println("pw : " + user.getPw());
+		
+		//login 정보로 count 확인
+		int bisProcess = service.loginCount(user);
+		
+		
+		return bisProcess;
+	}
+	
 	
 }

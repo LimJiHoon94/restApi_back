@@ -37,6 +37,14 @@ public class UserServiceImpl implements UserService {
 	public int idCheck(String id) {
 		return userDao.idCheck(id);
 	}
+
+	//login count
+	@Override
+	public int loginCount(User user) {
+		return userDao.loginCount(user);
+	}
+	
+	
 	
 	
 	
