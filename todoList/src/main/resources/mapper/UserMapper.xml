@@ -23,5 +23,17 @@
 		SELECT COUNT(*) FROM T_USER_INFO WHERE ID = #{id} AND PW = #{pw}
 	</select>
 	
+	<select id="getUser" resultType="com.dev.todoList.dto.User" parameterType="com.dev.todoList.dto.User">
+		SELECT USER_SEQ userSeq ,
+			   ID ,
+		       PW , 
+		       USER_NAME userName,
+		       E_MAIL eMail,
+		       USER_LEVEL userLevel
+		  FROM T_USER_INFO 
+		 WHERE ID = #{id}
+		   AND PW = #{pw}
+	</select>
+	
 	
 </mapper>

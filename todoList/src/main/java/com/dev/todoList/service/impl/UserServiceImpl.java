@@ -44,6 +44,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.loginCount(user);
 	}
 	
+	//GetUser
+	@Override
+	public User getUser(User user) {
+		return userDao.getUser(user);
+	}
+	
 	
 	
 	

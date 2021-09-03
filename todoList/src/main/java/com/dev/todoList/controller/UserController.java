@@ -28,8 +28,11 @@ public class UserController {
 	@Autowired
 	private UserService service;
 	
-	
-	//회원가입
+	//====================================================================
+	// API : http://localhost:8080/api/user/membershipJoin
+	// 기능 : 회원가입
+	// Parameter : ID , PW , E-MAIL , NAME
+	//====================================================================
 	@PostMapping(path="/membershipJoin")
 	public int membershipJoin(User user) {
 		//비즈니스 변수
@@ -49,18 +52,30 @@ public class UserController {
 		
 		return bisProcess;
 	}
-	
-	//로그인
+	//====================================================================
+	// API : http://localhost:8080/api/user/loginRun
+	// 기능 : 로그인
+	// Parameter : ID , PW 
+	//====================================================================
 	@PostMapping(path = "/loginRun")
 	public int loginRun(User user) {
-		System.out.println("id : " + user.getId());
-		System.out.println("pw : " + user.getPw());
 		
 		//login 정보로 count 확인
 		int bisProcess = service.loginCount(user);
 		
-		
 		return bisProcess;
+	}
+	
+	
+	//====================================================================
+	// API : http://localhost:8080/api/user/getUser
+	// 기능 : 유저정보 가져오기
+	// Parameter : ID , PW 
+	//====================================================================
+	@PostMapping(path = "/getUser")
+	public User getUser(User user) {
+		
+		return service.getUser(user);
 	}
 	
 	
