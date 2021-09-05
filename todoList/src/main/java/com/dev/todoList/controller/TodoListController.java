@@ -31,7 +31,31 @@ public class TodoListController {
 		return service.getAllTodoContent(user); 
 	}
 	
-	
+	//====================================================================
+	// API : http://localhost:8080/api/todoList/AddTodoContent
+	// 기능 : T_TODO_CONTENT에 Insert
+	// Parameter : User Seq , Content
+	//====================================================================	
+	@PostMapping(path = "/AddTodoContent")
+	public List<TodoContent> addTodoContent(String userSeq , String content){
+		int addTodoSeq = service.getAddTodoSeq(Integer.parseInt(userSeq));
+		int addContentSeq = service.getAddContentSeq(Integer.parseInt(userSeq));
+		
+		//예외처리 추가해야함
+		
+		TodoContent todoContent = new TodoContent();
+		todoContent.setTodoSeq(addTodoSeq);
+		todoContent.setSeq(addContentSeq);
+		todoContent.setContent(content);
+		todoContent.setUserSeq(Integer.parseInt(userSeq));
+		
+		service.insertNewTodoContent(todoContent);
+		
+		User user = new User();
+		user.setUserSeq(Integer.parseInt(userSeq));
+		
+		return service.getAllTodoContent(user);
+	}
 	
 	
 	

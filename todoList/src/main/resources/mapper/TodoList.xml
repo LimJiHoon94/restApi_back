@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dev.todoList.dao.TodoListDAO">
 	
-	<!-- T_TODO_CONTENT -->
+	<!-- GET T_TODO_CONTENT -->
 	<select id="getAllTodoContent" parameterType="com.dev.todoList.dto.User" resultType="com.dev.todoList.dto.TodoContent">
 		SELECT TODO_SEQ , 
 			   USER_SEQ ,
@@ -13,5 +13,29 @@
 		  FROM T_TODO_CONTENT
 		 WHERE USER_SEQ = #{userSeq}
 	</select>
+	
+	<!-- GET LAST TODO_SEQ + 1 -->
+	<select id="getAddTodoSeq" parameterType="int" resultType="int">
+		SELECT IFNULL(TODO_SEQ , 0) + 1 todo_seq
+		  FROM T_TODO_CONTENT 
+		 WHERE USER_SEQ = #{userSeq} 
+		 ORDER BY TODO_SEQ DESC 
+		 LIMIT 1
+	</select>
+	
+	<!-- GET LAST SEQ + 1 -->
+	<select id="getAddContentSeq" parameterType="int" resultType="int">
+		 SELECT IFNULL(SEQ , 0) + 1 seq
+		  FROM T_TODO_CONTENT 
+		 WHERE USER_SEQ = #{userSeq} 
+		 ORDER BY SEQ DESC 
+		 LIMIT 1
+	</select>
+	
+	<insert id="insertNewTodoContent" parameterType="com.dev.todoList.dto.TodoContent">
+		INSERT INTO T_TODO_CONTENT (TODO_SEQ , USER_SEQ , CONTENT, SEQ , STATE , CREATE_DATE)
+		VALUES ( #{todoSeq} , #{userSeq} , #{content} , #{seq} ,0 , now())
+	</insert>
+	
 	
 </mapper>
