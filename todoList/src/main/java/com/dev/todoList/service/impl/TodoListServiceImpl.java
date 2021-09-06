@@ -23,8 +23,8 @@ public class TodoListServiceImpl implements TodoListService{
 		}
 
 		@Override
-		public int getAddTodoSeq(int userSeq) {
-			return todoListDao.getAddTodoSeq(userSeq);
+		public int getAddTodoSeq() {
+			return todoListDao.getAddTodoSeq();
 		}
 
 		@Override
@@ -36,6 +36,12 @@ public class TodoListServiceImpl implements TodoListService{
 		public void insertNewTodoContent(TodoContent todoContent) {
 			todoListDao.insertNewTodoContent(todoContent);
 		}
+
+		@Override
+		public int getTodoContentCount(int userSeq) {
+			return todoListDao.getTodoContentCount(userSeq);
+		}
+
 		
 		
 	

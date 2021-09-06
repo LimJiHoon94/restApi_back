@@ -16,10 +16,16 @@ public interface TodoListService {
 	List<TodoContent> getAllTodoContent(User user);
 	
 	//=======================================================
-	// 기능 : UserSeq로 마지막 Todo_Seq +1 조회
+	// 기능 :  마지막 Todo_Seq +1 조회
 	// return : 새로 추가할 Todo_Seq 조회
 	//=======================================================
-	int getAddTodoSeq(int userSeq);
+	int getAddTodoSeq();
+	
+	//=======================================================
+	// 기능 : UserSeq로  TodoContent Count조회
+	// return : 총 TodoContent Count 조회
+	//=======================================================
+	int  getTodoContentCount(int userSeq);
 	
 	//=======================================================
 	// 기능 : UserSeq로 마지막 Content Seq +1 조회

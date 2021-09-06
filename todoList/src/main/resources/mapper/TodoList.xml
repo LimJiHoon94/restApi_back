@@ -4,21 +4,25 @@
 	
 	<!-- GET T_TODO_CONTENT -->
 	<select id="getAllTodoContent" parameterType="com.dev.todoList.dto.User" resultType="com.dev.todoList.dto.TodoContent">
-		SELECT TODO_SEQ , 
-			   USER_SEQ ,
+		SELECT TODO_SEQ  todoSeq, 
+			   USER_SEQ userSeq ,
 		       CONTENT , 
 		       SEQ ,
 		       STATE ,
-		       CREATE_DATE
+		       CREATE_DATE createDate
 		  FROM T_TODO_CONTENT
 		 WHERE USER_SEQ = #{userSeq}
 	</select>
 	
+	<!-- GET T_TODO_CONTENT COUNT -->
+	<select id="getTodoContentCount" parameterType="int" resultType="int">
+		SELECT COUNT(*) FROM T_TODO_CONTENT WHERE USER_SEQ = #{userSeq} 
+	</select>
+	
 	<!-- GET LAST TODO_SEQ + 1 -->
-	<select id="getAddTodoSeq" parameterType="int" resultType="int">
+	<select id="getAddTodoSeq" resultType="int">
 		SELECT IFNULL(TODO_SEQ , 0) + 1 todo_seq
 		  FROM T_TODO_CONTENT 
-		 WHERE USER_SEQ = #{userSeq} 
 		 ORDER BY TODO_SEQ DESC 
 		 LIMIT 1
 	</select>

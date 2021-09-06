@@ -38,18 +38,34 @@ public class TodoListController {
 	//====================================================================	
 	@PostMapping(path = "/AddTodoContent")
 	public List<TodoContent> addTodoContent(String userSeq , String content){
-		int addTodoSeq = service.getAddTodoSeq(Integer.parseInt(userSeq));
-		int addContentSeq = service.getAddContentSeq(Integer.parseInt(userSeq));
+		int todoCount = service.getTodoContentCount(Integer.parseInt(userSeq));
 		
-		//예외처리 추가해야함
-		
-		TodoContent todoContent = new TodoContent();
-		todoContent.setTodoSeq(addTodoSeq);
-		todoContent.setSeq(addContentSeq);
-		todoContent.setContent(content);
-		todoContent.setUserSeq(Integer.parseInt(userSeq));
-		
-		service.insertNewTodoContent(todoContent);
+		//최초 생성시 예외처리
+		if(todoCount == 0) {
+			int addTodoSeq = service.getAddTodoSeq();
+			
+			TodoContent todoContent = new TodoContent();
+			todoContent.setTodoSeq(addTodoSeq);
+			todoContent.setSeq(1);
+			todoContent.setContent(content);
+			todoContent.setUserSeq(Integer.parseInt(userSeq));
+			
+			service.insertNewTodoContent(todoContent);
+			
+		}else {
+			
+			int addTodoSeq = service.getAddTodoSeq();
+			int addContentSeq = service.getAddContentSeq(Integer.parseInt(userSeq));
+			
+			TodoContent todoContent = new TodoContent();
+			todoContent.setTodoSeq(addTodoSeq);
+			todoContent.setSeq(addContentSeq);
+			todoContent.setContent(content);
+			todoContent.setUserSeq(Integer.parseInt(userSeq));
+			
+			service.insertNewTodoContent(todoContent);
+			
+		}
 		
 		User user = new User();
 		user.setUserSeq(Integer.parseInt(userSeq));
@@ -57,6 +73,10 @@ public class TodoListController {
 		return service.getAllTodoContent(user);
 	}
 	
-	
+	@PostMapping(path = "/DeleteTodoContent")
+	public void DeleteTodoContent(String todoSeq, String userSeq) {
+		System.out.println(todoSeq);
+		System.out.println(userSeq);
+	}
 	
 }
