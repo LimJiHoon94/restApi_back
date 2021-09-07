@@ -36,10 +36,15 @@
 		 LIMIT 1
 	</select>
 	
+	<!-- New Insert -->
 	<insert id="insertNewTodoContent" parameterType="com.dev.todoList.dto.TodoContent">
 		INSERT INTO T_TODO_CONTENT (TODO_SEQ , USER_SEQ , CONTENT, SEQ , STATE , CREATE_DATE)
 		VALUES ( #{todoSeq} , #{userSeq} , #{content} , #{seq} ,0 , now())
 	</insert>
 	
+	<!-- Delete Todo Content -->
+	<delete id="deleteTodoContent" parameterType="int">
+		DELETE FROM T_TODO_CONTENT WHERE TODO_SEQ = #{todoSeq}
+	</delete>
 	
 </mapper>

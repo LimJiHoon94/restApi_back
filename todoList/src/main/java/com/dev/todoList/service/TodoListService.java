@@ -39,4 +39,10 @@ public interface TodoListService {
 	//=======================================================
 	void insertNewTodoContent(TodoContent todoContent);
 	
+	//=======================================================
+	// 기능 : T_TODO_CONTENT DELLETE
+	// return : null
+	//=======================================================
+	void deleteTodoContent(int TodoSeq);
+	
 }

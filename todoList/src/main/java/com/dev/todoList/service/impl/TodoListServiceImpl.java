@@ -42,6 +42,12 @@ public class TodoListServiceImpl implements TodoListService{
 			return todoListDao.getTodoContentCount(userSeq);
 		}
 
+		@Override
+		public void deleteTodoContent(int TodoSeq) {
+			todoListDao.deleteTodoContent(TodoSeq);
+			
+		}
+
 		
 		
 	

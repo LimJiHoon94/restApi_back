@@ -74,9 +74,13 @@ public class TodoListController {
 	}
 	
 	@PostMapping(path = "/DeleteTodoContent")
-	public void DeleteTodoContent(String todoSeq, String userSeq) {
-		System.out.println(todoSeq);
-		System.out.println(userSeq);
+	public List<TodoContent> DeleteTodoContent(String todoSeq, String userSeq) {
+		service.deleteTodoContent(Integer.parseInt(todoSeq));
+		
+		User user = new User();
+		user.setUserSeq(Integer.parseInt(userSeq));
+		
+		return service.getAllTodoContent(user); 
 	}
 	
 }
