@@ -47,4 +47,9 @@
 		DELETE FROM T_TODO_CONTENT WHERE TODO_SEQ = #{todoSeq}
 	</delete>
 	
+	<!-- Delete Todo Content -->
+	<delete id="deleteTodoContentAll" parameterType="int">
+		DELETE FROM T_TODO_CONTENT WHERE USER_SEQ = #{userSeq}
+	</delete>
+	
 </mapper>

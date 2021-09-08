@@ -73,6 +73,11 @@ public class TodoListController {
 		return service.getAllTodoContent(user);
 	}
 	
+	//====================================================================
+	// API : http://localhost:8080/api/todoList/DeleteTodoContent
+	// 기능 : T_TODO_CONTENT에 Delete
+	// Parameter : User Seq , Todo Seq
+	//====================================================================	
 	@PostMapping(path = "/DeleteTodoContent")
 	public List<TodoContent> DeleteTodoContent(String todoSeq, String userSeq) {
 		service.deleteTodoContent(Integer.parseInt(todoSeq));
@@ -82,5 +87,17 @@ public class TodoListController {
 		
 		return service.getAllTodoContent(user); 
 	}
+	
+	//====================================================================
+	// API : http://localhost:8080/api/todoList/DeleteTodoContentAll
+	// 기능 : T_TODO_CONTENT에 전체 Delete
+	// Parameter : User Seq 
+	//====================================================================	
+	@PostMapping(path = "/DeleteTodoContentAll")
+	public void DeleteTodoContent(String userSeq) {
+		service.deleteTodoContentAll(Integer.parseInt(userSeq));
+		
+	}
+	
 	
 }

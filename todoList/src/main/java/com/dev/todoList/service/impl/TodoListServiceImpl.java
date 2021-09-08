@@ -48,6 +48,12 @@ public class TodoListServiceImpl implements TodoListService{
 			
 		}
 
+		@Override
+		public void deleteTodoContentAll(int TodoSeq) {
+			todoListDao.deleteTodoContentAll(TodoSeq);
+			
+		}
+
 		
 		
 	
