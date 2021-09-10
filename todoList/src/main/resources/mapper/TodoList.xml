@@ -12,6 +12,7 @@
 		       CREATE_DATE createDate
 		  FROM T_TODO_CONTENT
 		 WHERE USER_SEQ = #{userSeq}
+		   AND STATE = 0
 	</select>
 	
 	<!-- GET T_TODO_CONTENT COUNT -->
