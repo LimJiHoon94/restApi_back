@@ -10,6 +10,7 @@ public class TodoContent {
 	private int seq;
 	private int state;
 	private Date createDate;
+	private Date completionDate;
 	
 	public TodoContent() {
 		super();
@@ -65,6 +66,13 @@ public class TodoContent {
 		this.createDate = createDate;
 	}
 	
+	public Date getCompletionDate() {
+		return completionDate;
+	}
+	
+	public void setCompletionDate(Date completionDate) {
+		this.completionDate = completionDate;
+	}
 	
 	@Override
 	public String toString() {

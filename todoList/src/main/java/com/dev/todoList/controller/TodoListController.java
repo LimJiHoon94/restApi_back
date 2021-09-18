@@ -99,5 +99,16 @@ public class TodoListController {
 		
 	}
 	
+	//====================================================================
+	// API : http://localhost:8080/api/todoList/getAllCompletionList
+	// 기능 : T_TODO_CONTENT에 STATE가 1인 LIST 조회
+	// Parameter : User Seq 
+	//====================================================================
+	@PostMapping(path = "/getAllCompletionList")
+	public List<TodoContent> getAllCompletionList(String userSeq){
+		System.out.println(userSeq);
+		return service.getAllCompletionList(Integer.parseInt(userSeq));
+	}
+	
 	
 }

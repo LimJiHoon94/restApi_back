@@ -51,4 +51,11 @@ public interface TodoListService {
 	//=======================================================
 	void deleteTodoContentAll(int TodoSeq);
 	
+	//=======================================================
+	// 기능 : T_TODO_CONTENT State가 1인 LIST 조회
+	// return : 완료한 CONTENT LIST
+	//=======================================================
+	List<TodoContent> getAllCompletionList(int userSeq);
+	
+	
 }

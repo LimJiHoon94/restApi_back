@@ -54,6 +54,11 @@ public class TodoListServiceImpl implements TodoListService{
 			
 		}
 
+		@Override
+		public List<TodoContent> getAllCompletionList(int userSeq) {
+			return todoListDao.getAllCompletionList(userSeq);
+		}
+
 		
 		
 	

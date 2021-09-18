@@ -43,14 +43,31 @@
 		VALUES ( #{todoSeq} , #{userSeq} , #{content} , #{seq} ,0 , now())
 	</insert>
 	
-	<!-- Delete Todo Content -->
-	<delete id="deleteTodoContent" parameterType="int">
+	<!-- Update Todo Content -->
+	<update id="deleteTodoContent" parameterType="int">
+		UPDATE T_TODO_CONTENT SET STATE = 1 , COMPLETION_DATE = NOW()  WHERE TODO_SEQ = #{todoSeq}
+	</update>
+	<!-- <delete id="deleteTodoContent" parameterType="int">
 		DELETE FROM T_TODO_CONTENT WHERE TODO_SEQ = #{todoSeq}
-	</delete>
+	</delete> -->
 	
 	<!-- Delete Todo Content -->
 	<delete id="deleteTodoContentAll" parameterType="int">
 		DELETE FROM T_TODO_CONTENT WHERE USER_SEQ = #{userSeq}
 	</delete>
+	
+	<select id="getAllCompletionList" parameterType="int" resultType="com.dev.todoList.dto.TodoContent">	
+		SELECT TODO_SEQ todoSeq ,
+		       USER_SEQ userSeq,
+		       CONTENT content,
+		       SEQ seq,
+		       STATE state,
+		       CREATE_DATE createDate ,
+		       COMPLETION_DATE completionDate
+		  FROM T_TODO_CONTENT 
+		 WHERE STATE = 1
+		   AND USER_SEQ = #{userSeq}
+	  ORDER BY TODO_SEQ ;
+	</select>
 	
 </mapper>
