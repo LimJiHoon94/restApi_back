@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.todoList.dao.UserDAO">
+	
+	
+	<!-- T_USER_INFO 마지막 USER_SEQ 조회 -->
+	<select id="getUserInfoLastSeq" resultType="int">
+		SELECT USER_SEQ + 1 AS LAST_USER_SEQ FROM T_USER_INFO ORDER BY USER_SEQ DESC LIMIT 1
+	</select>
+	
+	<!-- id중복처리 -->
+	<select id="idCheck" resultType="int" parameterType="string">
+		SELECT count(*) FROM T_USER_INFO WHERE ID = #{id}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="joinUser" parameterType="com.dev.todoList.dto.User">
+		INSERT INTO T_USER_INFO (USER_SEQ , ID , PW, USER_NAME , E_MAIL ,USER_LEVEL , CREATE_DATE)
+			VALUES (#{userSeq}, #{id} , #{pw} , #{userName} , #{eMail} , 1 , NOW())
+	</insert>
+	
+	<select id="loginCount" resultType="int" parameterType="com.dev.todoList.dto.User">
+		SELECT COUNT(*) FROM T_USER_INFO WHERE ID = #{id} AND PW = #{pw}
+	</select>
+	
+	<select id="getUser" resultType="com.dev.todoList.dto.User" parameterType="com.dev.todoList.dto.User">
+		SELECT USER_SEQ userSeq ,
+			   ID ,
+		       PW , 
+		       USER_NAME userName,
+		       E_MAIL eMail,
+		       USER_LEVEL userLevel
+		  FROM T_USER_INFO 
+		 WHERE ID = #{id}
+		   AND PW = #{pw}
+	</select>
+	
+	
+</mapper>

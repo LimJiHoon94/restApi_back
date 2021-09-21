@@ -42,7 +42,6 @@ public class MembersController {
 	@GetMapping(path = "/members")
 	public List<Member> getAllMembers() {
 		//1
-		System.out.println("call");
 		List<Member> memberList =  service.getAllMembers();
 		for(int i = 0 ; i < memberList.size(); i++) {
 			System.out.println(memberList.get(i).getName());
